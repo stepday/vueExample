@@ -1,0 +1,34 @@
+<div id="app">
+    <div class="row">
+    	<input type="text" placeholder="请输入账号" v-model="name" v-on:keyup.tab="change"><span class="text-sm">左侧输入框聚焦后按下tab键触发</span>
+    </div>
+    <div class="row">
+        <input type="password" placeholder="请输入密码" v-model="pwd" v-on:keyup.enter="login"><span class="text-sm">左侧输入框聚焦后按下enter键提交</span>
+    </div>
+</div>
+<script type="text/javascript">
+new Vue({
+    el: '#app',
+    data: {
+        name: "",
+        pwd:""
+    },
+    methods: {
+    	change:function(){    	
+    		if(this.name.length == 0)
+    		{
+    			alert("请输入账号");
+    			return false;
+    		}
+    		return true;
+    	},
+        login: function() {
+            if (this.name.length == 0 || this.pwd.length == 0) {
+                alert("请输入完整表单信息");
+            } else {
+                alert("你提交的信息为:" + this.name+"/"+this.pwd);
+            }
+        }
+    }
+});
+</script>

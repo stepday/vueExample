@@ -1,0 +1,44 @@
+<div id="app">
+	<p class="center">前十大最好看的电影</p>
+	<ul>
+		<li v-for="item in list">{{item.name}}<span>[{{item.year}}年]</span></li>
+	</ul>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			list:[{
+				name:"肖申克的救赎",
+				year:1994
+			},{
+				name:"霸王别姬",
+				year:1993
+			},{
+				name:"这个杀手不太冷",
+				year:1994
+			},{
+				name:"阿甘正传",
+				year:1994
+			},{
+				name:"美丽人生",
+				year:1997
+			},{
+				name:"千与千寻",
+				year:2001
+			},{
+				name:"辛德勒的名单",
+				year:1993
+			},{
+				name:"泰坦尼克号",
+				year:1997
+			},{
+				name:"盗梦空间",
+				year:2010
+			},{
+				name:"机器人总动员",
+				year:2008
+			}]
+		}
+	});
+</script>

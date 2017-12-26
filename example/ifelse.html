@@ -1,0 +1,12 @@
+<div id="app">
+	<p v-if="isRight">是正确的标签</p>
+	<p v-else>显示错误的标签</p>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			isRight:false //默认显示错误标签
+		}
+	});
+</script>
