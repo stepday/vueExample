@@ -23,6 +23,19 @@ var Menu = [
 			name:"按键修饰符大集合",
 			url:"keycodes.html"
 		}]
+	},
+	{
+		name:"中级",
+		list:[{
+			name:"计算属性computed",
+			url:"canculateAtrr.html"
+		},{
+			name:"侦听属性watch",
+			url:"watch.html"
+		},{
+			name:"自定义组件",
+			url:"component.html"
+		}]
 	}
 ];
 

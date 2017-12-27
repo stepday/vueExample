@@ -1,0 +1,46 @@
+<div id="app">
+	<p>{{remessage}}</p>
+	<p>{{remessagetwo}}</p>
+	<p>{{a}}+{{b}} = {{c}}</p>
+	<p>{{a}}+{{b}}+{{c}} = {{d}}</p>
+
+	<b>计算属性是基于它们的依赖进行缓存的,通常用方法来替换计算属性</b>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			a:10,
+			b:30,			
+			message:"我要等待1s后显示"
+		},
+		//钩子函数
+		computed:{
+			//设置计算属性
+			remessage:function(){
+				return this.message.split('').reverse().join(' ');
+			},
+			remessagetwo:function(){
+				return this.remessage.split('').reverse().join(' ');
+			},
+			//计算属性处理 a+b = c
+			c:function(){
+				return this.a+this.b;
+			},
+			d:{
+				//getter和setter
+				get:function(){					
+					this.d = 100; //这里改变了d的值会优先进入 下方的set 重置了a的值 影响了最后d的结果值
+					return this.a+this.b+this.c;
+				},
+				set:function(newValue){
+					console.log("d="+newValue);
+					this.a = 20;
+				}
+			}
+		},
+		methods:{
+
+		}
+	});
+</script>

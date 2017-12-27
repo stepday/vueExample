@@ -1,0 +1,25 @@
+<div id="app">
+	<input type="text" v-model="name"><span class="text-sm">左侧输入文字</span>
+	<p>{{gretting}}</p>
+
+	<b>通常更好的做法是使用计算属性而不是命令式的 watch 回调</b>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			name:"",
+			gretting:""
+		},
+		//观察者
+		watch:{
+			//观察name属性是否发生了变化
+			name:function(val){
+				if(val.length > 0)
+					this.gretting = "Hello "+val;
+				else
+					this.gretting = "";
+			}
+		}
+	});
+</script>

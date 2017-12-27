@@ -1,0 +1,53 @@
+<div id="app">
+	<my-component-list :datalist="list"></my-component-list>
+</div>
+<b>要注册一个全局组件，可以使用 Vue.component(tagName, options)</b>
+<b>本示例展示了如何从父级传递数组给自定义子组件,要点如下：
+1、定义组件的时候需要通过props设置需要传递的属性数组;<br/>
+2、引入组件的时候需要通过v-bind:props设置的属性名="父级data里面的属性名称";<br/>
+3、子组件内的v-for的数组要和props设置的属性保持一致;<br/>
+4、设置propst的时候不能有大写
+</b>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			list:[{
+				name:"肖申克的救赎",
+				year:1994
+			},{
+				name:"霸王别姬",
+				year:1993
+			},{
+				name:"这个杀手不太冷",
+				year:1994
+			},{
+				name:"阿甘正传",
+				year:1994
+			},{
+				name:"美丽人生",
+				year:1997
+			},{
+				name:"千与千寻",
+				year:2001
+			},{
+				name:"辛德勒的名单",
+				year:1993
+			},{
+				name:"泰坦尼克号",
+				year:1997
+			},{
+				name:"盗梦空间",
+				year:2010
+			},{
+				name:"机器人总动员",
+				year:2008
+			}]
+		}
+	});
+	//注册组件
+	Vue.component("my-component-list",{
+		template:'<li v-for="item in datalist">{{item.name}}<span>[{{item.year}}年]</span></li>',
+		props:["datalist"]
+	});
+</script>

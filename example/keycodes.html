@@ -5,6 +5,12 @@
     <div class="row">
         <input type="password" placeholder="请输入密码" v-model="pwd" v-on:keyup.enter="login"><span class="text-sm">左侧输入框聚焦后按下enter键提交</span>
     </div>
+    <div class="row">
+        <input type="number"  v-model.number="number"><span class="text-sm">{{number}}</span>
+    </div>
+    <div class="row">
+        <input type="text"  v-model.trim="trimstr"><span class="text-sm">{{trimstr}}</span>
+    </div>
 </div>
 <script type="text/javascript">
 new Vue({
