@@ -9,7 +9,7 @@ vueJs的N多练习例子，各种花式Demo，让你受用百倍
 
 ### 第一步 签出项目
 <pre>
-  git clone https://github.com/stepday/vueExample.git vueExample
+	git clone https://github.com/stepday/vueExample.git vueExample
 </pre>
 
 ### 第二步 安装项目依赖
