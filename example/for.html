@@ -1,7 +1,7 @@
 <div id="app">
 	<p class="center">前十大最好看的电影</p>
 	<ul>
-		<li v-for="item in list">{{item.name}}<span>[{{item.year}}年]</span></li>
+		<li v-for="(item,index) in list">{{index}}.{{item.name}}<span>[{{item.year}}年]</span></li>
 	</ul>
 </div>
 <script type="text/javascript">

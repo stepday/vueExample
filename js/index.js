@@ -5,6 +5,9 @@ var Menu = [
 			name:"Vuejs是什么",
 			url:"main.html"
 		},{
+			name:"常用指令集合",
+			url:"command.html"
+		},{
 			name:"Hello World",
 			url:"helloWorld.html"
 		},{
@@ -22,6 +25,9 @@ var Menu = [
 		},{
 			name:"按键修饰符大集合",
 			url:"keycodes.html"
+		},{
+			name:"生命周期集合",
+			url:"lifecycle.html"
 		}]
 	},
 	{
@@ -35,6 +41,27 @@ var Menu = [
 		},{
 			name:"自定义组件",
 			url:"component.html"
+		},{
+			name:"动画过渡效果",
+			url:"animation.html"
+		}]
+	},{
+		name:"高级",
+		list:[{
+			name:"可复用性&选项合并",
+			url:"itemMerge.html"
+		},{
+			name:"可复用&全局混合",
+			url:"publicMerge.html"
+		},{
+			name:"自定义指令&全局注册",
+			url:"publicCommand.html"
+		},{
+			name:"自定义指令&局部注册",
+			url:"singleCommand.html"
+		},{
+			name:"渲染函数&render",
+			url:"render.html"
 		}]
 	}
 ];
@@ -72,13 +99,8 @@ $(document).ready(function(){
 	$('.left-box ul li a').click(function(){
 		$('.left-box ul li a').removeClass("active");
 		$(this).addClass("active");
-		$('.right-box .source').load('/example/'+$(this).data("url"),function(_html){
-			//显示 输出到显示容器内
-			$('.result').html(_html);
-
-			$('.right-box .source').html('<pre class="brush: js;">'+$('.right-box .source').html()+'</pre>');
-			
-			//源代码高亮
+		$('.result').load('/example/'+$(this).data("url"),function(_html){
+			$('.right-box .source').html('<pre class="brush: js;">'+_html.replace(/\app/g,"myapp").replace("script",' script ')+'</pre>');
 			SyntaxHighlighter.highlight();
 		});
 	});

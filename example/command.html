@@ -1,0 +1,50 @@
+<div id="app">
+	<b>v-text:更新元素的 textContent。如果要更新部分的 textContent ，需要使用 {{ Mustache }} 插值。</b>
+	<!-- <div v-text="nameText"></div> -->
+	<div>{{nameText}}</div>
+	<b>v-html:更新元素的 innerHTML 。注意：内容按普通 HTML 插入 - 不会作为 Vue 模板进行编译 。如果试图使用 v-html 组合模板，可以重新考虑是否通过使用组件来替代。</b>
+	<div v-once v-html="nameHtml"></div>
+	<b>v-show:切换元素的display CSS属性，元素会实实在在的在页面上的</b>
+	<p v-show="isShow">{{nameText}}</p>
+	<button class="btn" @click="changeShow"><i>切换显隐</i></button>
+	<b>v-if:根据表达式的值的真假条件渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是 < template> ，将提出它的内容作为条件块。当条件变化时该指令触发过渡效果。</b>
+	<!-- <p v-if="isShow">我要显示吗</p> -->
+	<b>v-else:前一兄弟元素必须有 v-if 或 v-else-if</b>
+	<p v-if="step==1">我是第一步骤</p>
+	<p v-else-if="step==2">我是第二步骤</p>
+	<p v-else>我是第三步骤</p>
+	<button class="btn" v-on:click="showStep(1)"><i>显示第一个</i></button>
+	<button class="btn" v-on:click="showStep(2)"><i>显示第二个</i></button>
+	<button class="btn" v-on:click="showStep(3)"><i>显示第三个</i></button>
+	<b>v-for:基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression ，为当前遍历的元素提供别名</b>
+	<ul>
+		<li v-for="item in nameList">{{item.name}}</li>
+	</ul>
+	<b>v-pre:跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。</b>
+	<p v-pre>{{nameText}}</p>
+	<b>v-cloak:这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如 [v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。</b>
+	<p v-cloak>{{nameText}}</p>
+</div>
+<style type="text/css">
+	[v-cloak]{ display: none; }
+</style>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			nameHtml:"<p style='color:red;'>stepday</p>",
+			nameText:"stepday",
+			isShow:true,
+			step:1,
+			nameList:[{name:"name1"},{name:"name2"},{name:"name3"}]
+		},
+		methods:{
+			changeShow:function(){
+				this.isShow = !this.isShow;
+			},
+			showStep:function(_step){
+				this.step = _step;
+			}
+		}
+	});
+</script>

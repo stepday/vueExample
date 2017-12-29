@@ -1,0 +1,27 @@
+<div id="app">
+	<input v-focus v-init="{text:'我是初始值',color:'red'}">
+	<b style="margin-top: 10px;">
+		局部注册自定义指令只需要在new Vue对象内设置directives属性节点即可<br/>
+		聚焦效果不能使用函数简写模式，函数简写模式主要是触发bind和update的 这个时候元素还未插入dom，所以执行的focus会失效，必须使用inserted 函数才可
+	</b>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		//自定义指令配置
+		directives:{
+			//默认聚焦指令
+			focus:{
+				// 当被绑定的元素插入到 DOM 中时……
+				inserted:function(el){					
+					el.focus();
+				}
+			},
+			//初始值设置指令
+			init:function(el,binding){
+				el.value = binding.value.text;
+				el.style.color = binding.value.color;
+			}
+		}
+	});
+</script>

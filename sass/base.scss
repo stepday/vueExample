@@ -1,6 +1,6 @@
 html,
 body,
-.main-box {
+.main-box,p {
     margin: 0;
     padding: 0;
 }
@@ -118,6 +118,7 @@ body{
 		    font-size: 14px;
 		    display: inline-block;
 		    background: #fbf0ed;
+		    margin-top: 10px;
 		}
     }
 }

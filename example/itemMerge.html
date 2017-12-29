@@ -1,0 +1,38 @@
+<div id="app">
+	<div>{{text}}</div>
+
+	<b>值为对象的选项，例如 methods, components 和 directives，将被混合为同一个对象。两个对象键名冲突时，取组件对象的键值对。</b>
+</div>
+<script type="text/javascript">
+	//复用对象
+	var mixin = {
+		data:{
+			text:""
+		},
+		methods:{
+			one:function(){
+				this.text += "执行了函数one";
+			},
+			two:function(){
+				this.text += ",执行了函数two";
+			},
+			there:function(){
+				this.text += ",执行了复用对象的函数there";
+			}
+		}
+	};
+
+	var app = new Vue({
+		el:'#app',
+		mixins:[mixin],
+		methods:{
+			there:function(){
+				this.text += ",执行了组件对象内函数there";
+			}
+		}
+	});
+	
+	app.one();
+	app.two();
+	app.there();
+</script>

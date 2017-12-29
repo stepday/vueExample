@@ -1,0 +1,52 @@
+<div id="app">
+	<my-log v-bind:list="loglist"></my-log>
+	<b>
+	每个 Vue 实例在被创建之前都要经过一系列的初始化过程。例如需要设置数据监听、编译模板、挂载实例到 DOM、在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，给予用户机会在一些特定的场景下添加他们自己的代码。
+	</b>
+	<h5>生命周日示意图</h5>
+	<img src="https://cn.vuejs.org/images/lifecycle.png" style="width: 600px;" />
+	<img src="https://sfault-image.b0.upaiyun.com/334/606/3346068135-580822cd52898_articlex" style="width: 600px;">
+</div>
+<script type="text/javascript">	
+	new Vue({
+		el:"#app",
+		data:{
+			loglist:[]
+		},
+		beforeCreate:function(){
+			//监听无效
+			//这个时候是无法访问data属性的
+			console.log("vue实例马上开始创建了");
+		},
+		created:function(){
+			this.loglist.push("vue实例创建了好了");
+		},
+		beforeMount:function(){
+			this.loglist.push("模板编译/挂载之前");
+		},
+		mounted:function(){			
+			//this.loglist.push("模板编译/挂载之后");
+		},
+		beforeUpdate:function(){
+			this.loglist.push("组件更新之前");
+		},
+		updated:function(){
+			this.loglist.push("组件更新之后");
+		},
+		beforeDestory:function(){
+			this.loglist.push("组件销毁前");
+		},
+		destoryed:function(){
+			this.loglist.push("组件销毁后");
+		},
+        //局部注册
+        components:{
+            "my-log":{
+                template:'<div><p v-for="(item,index) in list">{{index+1}}、{{item}}</p></div>',
+                props:['list']
+            }
+        }
+	});
+
+	
+</script>

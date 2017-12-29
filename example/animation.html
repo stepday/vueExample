@@ -1,0 +1,60 @@
+<div id="app">
+    <div>
+        <button class="btn" v-on:click="isShow = !isShow"><i>{{btnName}}</i></button>
+        <transition name="main">
+            <p v-if="isShow">我要间隔0.5s后显示</p>
+        </transition>
+    </div>
+    <div>
+		<transition name="text">
+			<p v-if="textShow">这个杀手不太冷这个杀手不太冷这个杀手不太冷这个杀手不太冷这个杀手不太冷</p>
+		</transition>
+    </div>
+    <b>
+	 1、动画效果的关键是需要用transition或transition-group给包起来;<br/>
+	 2、需要设置name值，然后对应css要设置起来，css样式头部要跟上前面设置的name前缀
+	</b>
+</div>
+<script type="text/javascript">
+new Vue({
+    el: "#app",
+    data: {
+        btnName: "显示",
+        isShow: false,
+        textShow:false
+    },
+    watch: {
+        isShow: function(_newValue) {
+            this.btnName = _newValue ? "隐藏" : "显示";
+        }
+    },
+    created:function(){		
+		var _inThis = this;		
+		//间隔1s后加载文本信息
+		setTimeout(function(){			
+			_inThis.textShow = true;
+		},1000);
+	}
+});
+</script>
+<style type="text/css">
+.main-enter-active,
+.main-leave-active {
+    transition: opacity .5s
+}
+
+.main-enter,
+.main-leave-to {
+    opacity: 0
+}
+
+.text-enter-active,
+.text-leave-active {
+    transition: opacity 1s
+}
+
+.text-enter,
+.text-leave-to {
+    opacity: 0
+}
+</style>

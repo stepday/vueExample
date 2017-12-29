@@ -1,0 +1,30 @@
+<div id="app">
+	<p>自定义组件 实现根据level的传入值生成对应大小的h标签和初始文本信息</p>
+	<anchored-heading :level="1">Hello stepday</anchored-heading>
+	<anchored-heading :level="2">Hello stepday</anchored-heading>
+	<anchored-heading :level="3">Hello stepday</anchored-heading>
+	<anchored-heading :level="5">Hello stepday</anchored-heading>
+
+	<b style="margin-top:10px;">Vue 推荐在绝大多数情况下使用 template 来创建你的 HTML。然而在一些场景中，你真的需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。</b>
+</div>
+<script type="text/javascript">
+	//注册全局组件 使用render函数
+	Vue.component('anchored-heading',{
+		render:function(createElement){			
+			return createElement(
+				'h'+this.level, //标签名称
+				this.$slots.default //子组件的阵列
+			);
+		},
+		props:{
+			level:{
+				type:Number,
+				required:true
+			}
+		}
+	});
+
+	var app = new Vue({
+		el:"#app"
+	});
+</script>

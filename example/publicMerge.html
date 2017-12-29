@@ -1,0 +1,27 @@
+<div id="app">
+	<p v-html="text"></p>
+
+	<b>也可以全局注册混合对象。注意使用！ 一旦使用全局混合对象，将会影响到 所有 之后创建的 Vue 实例。使用恰当时，可以为自定义对象注入处理逻辑。</b>
+</div>
+<script type="text/javascript">
+	//定义全局对象
+	Vue.mixin({
+		created:function(){
+			this.text = "我被创建啦";
+		},
+		methods:{
+			one:function(){
+				this.text += "<br/>我是函数one，我被执行了";
+			}
+		}
+	});
+
+	var app = new Vue({
+		el:"#app",
+		data:{
+			text:""
+		}
+	});
+
+	app.one();
+</script>

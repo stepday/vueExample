@@ -43,11 +43,13 @@
 				name:"机器人总动员",
 				year:2008
 			}]
+		},
+		//局部注册
+		components:{
+			"my-component-list":{
+				template:'<ul><li v-for="item in datalist">{{item.name}}<span>[{{item.year}}年]</span></li></ul>',
+				props:["datalist"]
+			}
 		}
-	});
-	//注册组件
-	Vue.component("my-component-list",{
-		template:'<li v-for="item in datalist">{{item.name}}<span>[{{item.year}}年]</span></li>',
-		props:["datalist"]
 	});
 </script>
