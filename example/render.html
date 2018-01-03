@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	//注册全局组件 使用render函数
 	Vue.component('anchored-heading',{
-		render:function(createElement){			
+		render:function(createElement){					
 			return createElement(
 				'h'+this.level, //标签名称
 				this.$slots.default //子组件的阵列
@@ -25,6 +25,20 @@
 	});
 
 	var app = new Vue({
-		el:"#app"
-	});
+		el:"#app",
+		data:{
+			items:[{name:"rmj"},{name:"stepday"}]
+			//items:[]
+		},
+		render:function(createElement){
+			if(this.items.length){
+				return createElement("ul",this.items.map(function(item){
+					return createElement("li",item.name);
+				}));
+			}else{
+				return createElement("p","无任何数据");
+			}
+		}
+	});	
+	debugger
 </script>
